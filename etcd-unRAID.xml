@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+  <Beta>False</Beta>
+  <Category>NetworkServices:Other</Category>
+  <Date>2020-03-06</Date>
+  <Changes></Changes>
+  <Name>etcd</Name>
+  <Support>https://github.com/MarshallOfSound/unraid-templates/issues</Support>
+  <Description></Description>
+  <Project>https://github.com/MarshallOfSound/unraid-templates</Project>
+  <Registry>https://quay.io/coreos/etcd/</Registry>
+  <Repository>quay.io/coreos/etcd:v2.3.7</Repository>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>2379</HostPort>
+        <ContainerPort>2379</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>2380</HostPort>
+        <ContainerPort>2380</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>4001</HostPort>
+        <ContainerPort>4001</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>7001</HostPort>
+        <ContainerPort>7001</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Icon>https://dyltqmyl993wv.cloudfront.net/assets/stacks/etcd/img/etcd-stack-220x234.png</Icon>
+  <ExtraParams></ExtraParams>
+  <PostArgs>--advertise-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001 --listen-client-urls=http://0.0.0.0:2379,http://0.0.0.0:4001</PostArgs>
+</Container>

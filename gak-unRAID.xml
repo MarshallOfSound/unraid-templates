@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+  <Beta>False</Beta>
+  <Category>NetworkServices:Other</Category>
+  <Date>2020-03-06</Date>
+  <Changes></Changes>
+  <Name>gak</Name>
+  <Support>https://github.com/MarshallOfSound/unraid-templates/issues</Support>
+  <Description></Description>
+  <Project>https://github.com/MarshallOfSound/unraid-templates</Project>
+  <Registry>https://hub.docker.com/r/cloudposse/github-authorized-keys</Registry>
+  <Repository>cloudposse/github-authorized-keys</Repository>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>301</HostPort>
+        <ContainerPort>301</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/cache/appdata/gak/home</HostDir>
+      <ContainerDir>/home</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Name>GITHUB_API_TOKEN</Name>
+      <Value>your github API token</Value>
+    </Variable>
+    <Variable>
+      <Name>GITHUB_ORGANIZATION</Name>
+      <Value>your github org name</Value>
+    </Variable>
+    <Variable>
+      <Name>GITHUB_TEAM</Name>
+      <Value>your github team name</Value>
+    </Variable>
+    <Variable>
+      <Name>SYNC_USERS_GID</Name>
+      <Value>500</Value>
+    </Variable>
+    <Variable>
+      <Name>SYNC_USERS_GROUPS</Name>
+      <Value>sudo</Value>
+    </Variable>
+    <Variable>
+      <Name>SYNC_USERS_SHELL</Name>
+      <Value>/usr/bin/sudosh</Value>
+    </Variable>
+    <Variable>
+      <Name>SYNC_USERS_ROOT</Name>
+      <Value>/</Value>
+    </Variable>
+    <Variable>
+      <Name>SYNC_USERS_INTERVAL</Name>
+      <Value>60</Value>
+    </Variable>
+    <Variable>
+      <Name>ETCD_ENDPOINT</Name>
+      <Value>http://etcd:2379</Value>
+    </Variable>
+    <Variable>
+      <Name>ETCD_TTL</Name>
+      <Value>86400</Value>
+    </Variable>
+    <Variable>
+      <Name>ETCD_PREFIX</Name>
+      <Value>github-authorized-keys</Value>
+    </Variable>
+    <Variable>
+      <Name>LISTEN</Name>
+      <Value>:301</Value>
+    </Variable>
+    <Variable>
+      <Name>INTEGRATE_SSH</Name>
+      <Value>false</Value>
+    </Variable>
+    <Variable>
+      <Name>LOG_LEVEL</Name>
+      <Value>debug</Value>
+    </Variable>
+    <Variable>
+      <Name>LINUX_USER_ADD_TPL</Name>
+      <Value>adduser -D -s {shell} {username}</Value>
+    </Variable>
+    <Variable>
+      <Name>LINUX_USER_ADD_WITH_GID_TPL</Name>
+      <Value>adduser -D -s {shell} -u {gid} {username}</Value>
+    </Variable>
+    <Variable>
+      <Name>LINUX_USER_ADD_TO_GROUP_TPL</Name>
+      <Value>addgroup {group}</Value>
+    </Variable>
+    <Variable>
+      <Name>SSH_AUTHORIZED_KEYS_COMMAND_USER</Name>
+      <Value>root</Value>
+    </Variable>
+    <Variable>
+      <Name>SSH_RESTART_TPL</Name>
+      <Value>echo "sshd restart"</Value>
+    </Variable>
+  </Environment>
+  <Icon>https://raw.githubusercontent.com/MarshallOfSound/unraid-templates/master/key.png</Icon>
+  <ExtraParams>--mount source=gak-etc,target=/etc</ExtraParams>
+</Container>
